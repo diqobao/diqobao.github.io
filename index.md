@@ -2,5 +2,5 @@
 
 Master student @GT. Previous undergrad @ZJU.
 
-Maths Survivor.
+Maths Escaper.
 
