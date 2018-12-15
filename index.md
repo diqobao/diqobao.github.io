@@ -1,6 +1,6 @@
 ## Welcome
 
-Master student @GT. Previous undergrad @ZJU.
+Master student @GT in CSE. Previous undergrad @ZJU.
 
 Maths Escaper.
 
