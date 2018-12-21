@@ -1,6 +1,10 @@
-## Welcome
+## Aloha
 
-Master student @GT in CSE. Previous undergrad @ZJU.
+Graduate student @GT in CSE. Previously undergrad @ZJU.
 
 Maths Escaper.
+
+
+
+## Projects
 
