@@ -3,7 +3,7 @@ layout: misc
 title: About
 ---
 
-- MS in CSE@Georgia Tech, B.S. in Stat@ZJU
+- M.S. in CSE@Georgia Tech, B.S. in Stat@ZJU
 
 - Math Escaper
 
