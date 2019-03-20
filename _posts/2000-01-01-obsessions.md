@@ -9,4 +9,3 @@ image: arctic-2.jpg
 
 # obsessions
 
-
