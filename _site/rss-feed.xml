@@ -7,13 +7,12 @@
 		<atom:link href="/rss-feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>test!</title>
+				<title>WELCOME!</title>
 				
-					<dc:creator>test</dc:creator>
+					<dc:creator>admin</dc:creator>
 				
 				
-					<description>&lt;h3 id=&quot;test&quot;&gt;test&lt;/h3&gt;
-
+					<description>&lt;h1 id=&quot;welcome&quot;&gt;WELCOME&lt;/h1&gt;
 </description>
 				
 				<pubDate>Sun, 10 Mar 2019 00:00:00 -0500</pubDate>
@@ -27,7 +26,7 @@
 					<dc:creator>B</dc:creator>
 				
 				
-					<description>&lt;p&gt;#obsessions&lt;/p&gt;
+					<description>&lt;h1 id=&quot;obsessions&quot;&gt;obsessions&lt;/h1&gt;
 </description>
 				
 				<pubDate>Sat, 01 Jan 2000 00:00:00 -0500</pubDate>
