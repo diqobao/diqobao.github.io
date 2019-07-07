@@ -1,13 +1,68 @@
----
-layout: default
-title: Home
----
+<!doctype html>
+<html class="is-preload">
 
-<div>
-  <center>
-    <div class="home-container" style="background-image:url({{ site.github.url }}/assets/img/yahaha-2.jpg)">
-      <!-- <h3><span>Hi</span></h3> -->
+{% include head.html %}
+
+<body class="is-preload">
+
+  <div class="container">
+    {% include header.html %}
+    <div id="wrapper">
+        <section class="intro">
+            <header>
+              <h1>HI</h1>
+              <p>I'm Jiahui</p>
+              <ul class="actions">
+                <li><a class="arrow scrolly"><span class="label">Next</span></a></li>
+              </ul>
+            </header>
+            <div class="content">
+              <span class="image fill" data-position="center"><img src="{{ site.github.url }}/assets/img/yahaha-2.jpg" alt="" /></span>
+            </div>
+          </section>
+          			
+					<section>
+            <header>
+              <h2>A little about ME</h2>
+            </header>
+            <div class="content">
+              <p><strong>Math</strong></p>
+              <p><strong>Coding</strong></p>
+              <!-- <span class="image main"><img src="images/pic02.jpg" alt="" /></span> -->
+            </div>
+          </section>
+          			
+					<section>
+            <header>
+              <h2> </h2>
+            </header>
+            <div class="content">
+              <p><strong></strong></p>
+              <!-- <span class="image main"><img src="images/pic02.jpg" alt="" /></span> -->
+            </div>
+          </section>
+
+          <section>
+            <header>
+              <h2> </h2>
+            </header>
+            <div class="content">
+              <p><strong></strong></p>
+              <!-- <span class="image main"><img src="images/pic02.jpg" alt="" /></span> -->
+            </div>
+          </section>
     </div>
-  </center>
-</div>
+    {% include footer.html %}
+  </div>
+  <!-- Scripts -->
+  <script src="{{ site.github.url }}/assets/js/jquery.min.js"></script>
+  <script src="{{ site.github.url }}/assets/js/jquery.scrolly.min.js"></script>
+  <script src="{{ site.github.url }}/assets/js/browser.min.js"></script>
+  <script src="{{ site.github.url }}/assets/js/breakpoints.min.js"></script>
+  <script src="{{ site.github.url }}/assets/js/util.js"></script>
+  <script src="{{ site.github.url }}/assets/js/main.js"></script>
+</body>
+</html>
+
+
 
