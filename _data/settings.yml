@@ -8,6 +8,7 @@ google-ID: ''
 
 menu:
 - {name: 'About', folder: 'pages', file: 'about.html'}
+- {name: 'Projects', folder: 'pages', file: 'projects.html'}
 - {name: 'Blog', folder: 'pages', file: 'posts.html'}
 - {name: 'Contact', folder: 'pages', file: 'contact.html'}
 

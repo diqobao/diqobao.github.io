@@ -3,9 +3,11 @@ layout: misc
 title: About
 ---
 
-- M.S. in CSE@Georgia Tech, B.S. in Stat@ZJU
+- B.S. in Stat@Zhejiang University
+  
+- M.S. in CSE@Georgia Tech
 
 - Math Escaper
   
-- Incoming Software Engineer Intern @Uber
+- Software Engineer Intern @Uber in summer 2019
 
