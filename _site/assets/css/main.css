@@ -142,13 +142,13 @@ th, td {
   width: 900px;
   padding: 5px; }
 
-.proj-container h3 span {
+.proj-container p span {
   display: inline-block;
   color: black;
   font: 23px/44px Helvetica, Sans-Serif;
   letter-spacing: -1px; }
 
-.proj-container h3 {
+.proj-container p {
   bottom: 0;
   margin: 0;
   padding: 0px;
@@ -436,7 +436,7 @@ th, td {
   text-align: center;
   min-height: 56px;
   line-height: 45px;
-  width: 1200px; }
+  width: 100%; }
 
 .footer a {
   color: black;
