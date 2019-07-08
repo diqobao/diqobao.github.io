@@ -1,12 +1,12 @@
 .site-header {
   min-height: 56px;
-  width: $container-width;
+  width: 100%;
   position: fixed;
   background-color: white;
   box-shadow: 0 5px 6px -6px #bbb;
   z-index: 100;
 }
-@media (max-width: $container-width) {
+@media (max-width: 100%) {
   .site-header {
       min-height: 56px;
       width: 95vw;

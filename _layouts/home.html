@@ -5,7 +5,6 @@
 
 <body class="is-preload">
 
-  <div class="container">
     {% include header.html %}
     <div id="wrapper">
         <section class="intro">
@@ -13,7 +12,7 @@
               <h1>HI</h1>
               <p>I'm Jiahui</p>
               <ul class="actions">
-                <li><a class="arrow scrolly"><span class="label">Next</span></a></li>
+                <li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
               </ul>
             </header>
             <div class="content">
@@ -21,7 +20,7 @@
             </div>
           </section>
           			
-					<section>
+					<section id="first">
             <header>
               <h2>A little about ME</h2>
             </header>
@@ -53,7 +52,7 @@
           </section>
     </div>
     {% include footer.html %}
-  </div>
+
   <!-- Scripts -->
   <script src="{{ site.github.url }}/assets/js/jquery.min.js"></script>
   <script src="{{ site.github.url }}/assets/js/jquery.scrolly.min.js"></script>
