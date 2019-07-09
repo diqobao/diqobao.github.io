@@ -3,7 +3,7 @@ layout: misc
 title: About
 ---
 
-- B.S. in Stat@Zhejiang University
+- B.S. in Statistics@Zhejiang University
   
 - M.S. in CSE@Georgia Tech
 
