@@ -4,7 +4,7 @@ disqus:
   disqus_shortname: 'BBBBB'
 
 # If you are not using Google Analytics, please change 'google-ID' to an empty string
-google-ID: '145178372'
+google-ID: 'UA-145178372-1'
 
 menu:
 - {name: 'About', folder: 'pages', file: 'about.html'}
