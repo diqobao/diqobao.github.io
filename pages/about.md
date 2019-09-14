@@ -3,7 +3,7 @@ layout: misc
 title: 
 ---
 
-- B.S. in Statistics@ZJU
+- B.S. in Stats@ZJU
   
 - M.S. in CSE@Georgia Tech
 
