@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-16T19:08:00-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiahui Bao</title><subtitle>空山无人</subtitle><author><name>Jiahui</name></author><entry><title type="html">Dependency Injection and Using Guice</title><link href="http://localhost:4000/blog/DIandGuice.html" rel="alternate" type="text/html" title="Dependency Injection and Using Guice" /><published>2020-05-14T00:00:00-07:00</published><updated>2020-05-14T00:00:00-07:00</updated><id>http://localhost:4000/blog/DIandGuice</id><content type="html" xml:base="http://localhost:4000/blog/DIandGuice.html">&lt;h1 id=&quot;dependency-injection-and-using-guice&quot;&gt;Dependency Injection and Using Guice&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-17T00:19:55-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiahui Bao</title><subtitle>空山无人</subtitle><author><name>Jiahui</name></author><entry><title type="html">Dependency Injection and Using Guice</title><link href="http://localhost:4000/blog/DIandGuice.html" rel="alternate" type="text/html" title="Dependency Injection and Using Guice" /><published>2020-05-14T00:00:00-07:00</published><updated>2020-05-14T00:00:00-07:00</updated><id>http://localhost:4000/blog/DIandGuice</id><content type="html" xml:base="http://localhost:4000/blog/DIandGuice.html">&lt;h1 id=&quot;dependency-injection-and-using-guice&quot;&gt;Dependency Injection and Using Guice&lt;/h1&gt;
 
 &lt;h2 id=&quot;dependency-injection&quot;&gt;Dependency Injection&lt;/h2&gt;
 &lt;p&gt;Simply put… A client receives service instances that it dependents on.&lt;/p&gt;
@@ -8,17 +8,21 @@
 
 &lt;p&gt;[For Details: https://en.wikipedia.org/wiki/Dependency_injection]&lt;/p&gt;
 
-&lt;h2 id=&quot;using-guice&quot;&gt;Using Guice&lt;/h2&gt;
+&lt;h2 id=&quot;using-guice-for-dependency-injection&quot;&gt;Using Guice for Dependency Injection&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/google/guice/&quot;&gt;Guice&lt;/a&gt;, a simple DI framework for Java.&lt;/p&gt;
 
-&lt;p&gt;As its Wiki writes, you can think of Guice as a map to bind each dependency with a provider.&lt;/p&gt;
+&lt;p&gt;As its Wiki writes, you can think of Guice as a map to bind each dependency to a provider.&lt;/p&gt;
 
 &lt;h3 id=&quot;main-purpose&quot;&gt;Main purpose&lt;/h3&gt;
-&lt;p&gt;Instead of letting clients to look up dependencies as the above pattern, an injector interface will handle that. (&lt;code class=&quot;highlighter-rouge&quot;&gt;@Inject&lt;/code&gt; is the new &lt;code class=&quot;highlighter-rouge&quot;&gt;A = new B();&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Instead of letting clients to look up dependencies as the above pattern, an injector interface will handle that. (&lt;code class=&quot;highlighter-rouge&quot;&gt;@Inject&lt;/code&gt; is the new &lt;code class=&quot;highlighter-rouge&quot;&gt;A = new B();&lt;/code&gt;). This interface should be defined in a module class, binding interfaces or class with the implementation or provider you want, and using injectors to create new instances according to your bindings.&lt;/p&gt;
 
 &lt;h3 id=&quot;an-example&quot;&gt;An Example&lt;/h3&gt;
 &lt;p&gt;We have this old-fashioned BugGeneratorService:&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RandomBugGeneratorService&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bug&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;generateBug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RandomBugGeneratorService&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;BugDao&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugDao&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Data accessor to get a bug instance&lt;/span&gt;
     
     &lt;span class=&quot;c1&quot;&gt;// Constructor&lt;/span&gt;
@@ -35,13 +39,15 @@
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;A client will do something like this, or inside a factory class.&lt;/p&gt;
+&lt;p&gt;A client will do something like this, or put it inside a factory class.&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;BugDao&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugDao&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NetworkBugDao&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RandomBugGeneratorService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bugDao&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;generateBug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;moving-to-guice&quot;&gt;Moving to Guice&lt;/h4&gt;
-&lt;p&gt;Define Module to declare dependencies&lt;/p&gt;
+&lt;p&gt;Define Module to declare dependencies. Here, BugGeneratorService is bound to RandomBugGeneratorService and BugDao is bound to a provider for NetworkBugDao.&lt;/p&gt;
+
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyModule&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AbstractModule&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -58,7 +64,7 @@
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Use Constructor Injection in service implementation&lt;/p&gt;
+&lt;p&gt;Use Constructor Injection in service implementation. The &lt;code class=&quot;highlighter-rouge&quot;&gt;@Inject&lt;/code&gt; annotation will let Guice look for instance for BugDao, in this case it will trigger NetworkBugDaoProvider when creating service with Guice.&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RandomBugGeneratorService&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;BugDao&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugDao&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     
@@ -76,7 +82,13 @@
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Write unit tests as usual&lt;/p&gt;
+&lt;p&gt;Then when you want to use BugGeneratorService&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Injector&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;injector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Guice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createInjector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyModule&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugGeneratorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;injector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;generateBug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Write unit tests as usual using constructor to create instance&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RandomBugGeneratorServiceUnitTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nd&quot;&gt;@Mock&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;BugDao&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dao&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
@@ -89,10 +101,10 @@
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Integration tests with injector&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RandomBugGeneratorServiceIntegrationTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;p&gt;Integration tests with injector. The &lt;code class=&quot;highlighter-rouge&quot;&gt;@Inject&lt;/code&gt; annotation will get RandomBugGeneratorService instance for BugGeneratorService, avoiding redundant code for creating RandomBugGeneratorService with BugDao.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BugGeneratorServiceIntegrationTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nd&quot;&gt;@Inject&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;RandomBugGeneratorService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
     &lt;span class=&quot;c1&quot;&gt;// tests...&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -114,4 +126,48 @@
 &lt;h4 id=&quot;injecting-constructor-or-fields&quot;&gt;injecting constructor or fields?&lt;/h4&gt;
 &lt;p&gt;Injecting constructor is the recommended way when you’re using final objects. Plus it is easy to write tests using this design.&lt;/p&gt;
 
-&lt;p&gt;Injecting fields is neither testable or safe to use for immutable field.&lt;/p&gt;</content><author><name>admin</name></author><category term="blog" /><summary type="html">Dependency Injection and Using Guice</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/morpho-1.jpg" /></entry><entry><title type="html">distributed queue</title><link href="http://localhost:4000/projects/queue.html" rel="alternate" type="text/html" title="distributed queue" /><published>2019-03-10T00:00:00-08:00</published><updated>2019-03-10T00:00:00-08:00</updated><id>http://localhost:4000/projects/queue</id><content type="html" xml:base="http://localhost:4000/projects/queue.html"></content><author><name>admin</name></author><category term="projects" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/cuba-1.jpg" /></entry><entry><title type="html">WELCOME!</title><link href="http://localhost:4000/blog/test.html" rel="alternate" type="text/html" title="WELCOME!" /><published>2019-03-10T00:00:00-08:00</published><updated>2019-03-10T00:00:00-08:00</updated><id>http://localhost:4000/blog/test</id><content type="html" xml:base="http://localhost:4000/blog/test.html">&lt;h1 id=&quot;welcome&quot;&gt;WELCOME&lt;/h1&gt;</content><author><name>admin</name></author><category term="blog" /><summary type="html">WELCOME</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/cuba-1.jpg" /></entry><entry><title type="html">bookyard</title><link href="http://localhost:4000/projects/bookyard.html" rel="alternate" type="text/html" title="bookyard" /><published>2019-02-10T00:00:00-08:00</published><updated>2019-02-10T00:00:00-08:00</updated><id>http://localhost:4000/projects/bookyard</id><content type="html" xml:base="http://localhost:4000/projects/bookyard.html"></content><author><name>admin</name></author><category term="projects" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/nyc-1.jpg" /></entry></feed>
+&lt;p&gt;Injecting fields is neither testable or safe to use for immutable field.&lt;/p&gt;
+&lt;h4 id=&quot;want-a-constructor-with-parameters-from-the-caller&quot;&gt;want a constructor with parameters from the caller&lt;/h4&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RandomBugGeneratorService&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Constructor&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;RandomBugGeneratorService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BugDao&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugDao&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Solution #0: add a factory to create instance only with a method to create new instance with parameters from caller, while injecting from Guice when creating the factory.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BugGeneratorServiceFactory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RandomBugGeneratorServiceFactory&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BugGeneratorServiceFactory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;BugDaoProvider&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugDaoProvider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Inject&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;RandomBugGeneratorServiceFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BugDaoProvider&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugDaoProvider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bugDaoProvider&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugDaoProvider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RandomBugGeneratorService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bugDaoProvider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and bind BugGeneratorServiceFactory to RandomBugGeneratorServiceFactory.&lt;/p&gt;
+
+&lt;p&gt;Solution #1: AssistedInject&lt;/p&gt;
+
+&lt;p&gt;we still need factories to handle parameters from Guice and caller separately, but use &lt;code class=&quot;highlighter-rouge&quot;&gt;@Assisted&lt;/code&gt; to avoid manually writing RandomBugGeneratorServiceFactory class in solution#1. It will link parameters with &lt;code class=&quot;highlighter-rouge&quot;&gt;@Assisted&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;create()&lt;/code&gt; method in factory, and bind the base factory(BugGeneratorServiceFactory) to the provider generated by Guice.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RandomBugGeneratorService&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Inject&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;RandomBugGeneratorService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BugDao&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugDao&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Assisted&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Assisted&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bugNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FactoryModuleBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;implement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BugGeneratorService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RandomBugGeneratorService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BugGeneratorServiceFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiahui</name></author><category term="blog" /><summary type="html">Dependency Injection and Using Guice</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/morpho-1.jpg" /></entry><entry><title type="html">distributed queue</title><link href="http://localhost:4000/projects/queue.html" rel="alternate" type="text/html" title="distributed queue" /><published>2019-03-10T00:00:00-08:00</published><updated>2019-03-10T00:00:00-08:00</updated><id>http://localhost:4000/projects/queue</id><content type="html" xml:base="http://localhost:4000/projects/queue.html"></content><author><name>admin</name></author><category term="projects" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/cuba-1.jpg" /></entry><entry><title type="html">WELCOME!</title><link href="http://localhost:4000/blog/test.html" rel="alternate" type="text/html" title="WELCOME!" /><published>2019-03-10T00:00:00-08:00</published><updated>2019-03-10T00:00:00-08:00</updated><id>http://localhost:4000/blog/test</id><content type="html" xml:base="http://localhost:4000/blog/test.html">&lt;h1 id=&quot;welcome&quot;&gt;WELCOME&lt;/h1&gt;</content><author><name>admin</name></author><category term="blog" /><summary type="html">WELCOME</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/cuba-1.jpg" /></entry><entry><title type="html">bookyard</title><link href="http://localhost:4000/projects/bookyard.html" rel="alternate" type="text/html" title="bookyard" /><published>2019-02-10T00:00:00-08:00</published><updated>2019-02-10T00:00:00-08:00</updated><id>http://localhost:4000/projects/bookyard</id><content type="html" xml:base="http://localhost:4000/projects/bookyard.html"></content><author><name>admin</name></author><category term="projects" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/nyc-1.jpg" /></entry></feed>
