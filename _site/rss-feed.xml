@@ -2,9 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<channel>
 		<title>Jiahui Bao</title>
-		<description>Still a student</description>
+		<description>空山无人</description>
 		<link></link>
 		<atom:link href="/rss-feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Dependency Injection and Using Guice</title>
+				
+					<dc:creator>admin</dc:creator>
+				
+				
+					<description>&lt;h1 id=&quot;dependency-injection-and-using-guice&quot;&gt;Dependency Injection and Using Guice&lt;/h1&gt;
+
+</description>
+				
+				<pubDate>Thu, 14 May 2020 00:00:00 -0700</pubDate>
+				<link>http://localhost:4000/blog/DIandGuice.html</link>
+				<guid isPermaLink="true">http://localhost:4000/blog/DIandGuice.html</guid>
+			</item>
 		
 			<item>
 				<title>WELCOME!</title>
@@ -15,7 +30,7 @@
 					<description>&lt;h1 id=&quot;welcome&quot;&gt;WELCOME&lt;/h1&gt;
 </description>
 				
-				<pubDate>Sun, 10 Mar 2019 00:00:00 -0500</pubDate>
+				<pubDate>Sun, 10 Mar 2019 00:00:00 -0800</pubDate>
 				<link>http://localhost:4000/blog/test.html</link>
 				<guid isPermaLink="true">http://localhost:4000/blog/test.html</guid>
 			</item>
@@ -29,7 +44,7 @@
 					<description>
 </description>
 				
-				<pubDate>Sun, 10 Mar 2019 00:00:00 -0500</pubDate>
+				<pubDate>Sun, 10 Mar 2019 00:00:00 -0800</pubDate>
 				<link>http://localhost:4000/projects/queue.html</link>
 				<guid isPermaLink="true">http://localhost:4000/projects/queue.html</guid>
 			</item>
@@ -43,7 +58,7 @@
 					<description>
 </description>
 				
-				<pubDate>Sun, 10 Feb 2019 00:00:00 -0500</pubDate>
+				<pubDate>Sun, 10 Feb 2019 00:00:00 -0800</pubDate>
 				<link>http://localhost:4000/projects/bookyard.html</link>
 				<guid isPermaLink="true">http://localhost:4000/projects/bookyard.html</guid>
 			</item>

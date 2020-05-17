@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dependency Injection and Using Guice"
-author: "admin"
+author: "Jiahui"
 categories: blog
 tags: [blog]
 image: morpho-1.jpg
@@ -25,7 +25,7 @@ YourService service = new YourServiceImpl(new ServiceA(new ServiceB(new ServiceC
 As its Wiki writes, you can think of Guice as a map to bind each dependency with a provider.
 
 ### Main purpose
-Instead of letting clients to look up dependencies as the above pattern, an injector interface will handle that. (`@Inject` is the new `A = new B();`)
+Instead of letting clients to look up dependencies as the above pattern, an injector interface will handle that. (`@Inject` is the new `A = new B();`). This interface should be defined in a module class, binding interfaces or class with the implementation or provider you want, and using injectors to create new instances according to your bindings.
 
 ### An Example
 We have this old-fashioned BugGeneratorService:
@@ -89,6 +89,12 @@ class RandomBugGeneratorService implements BugGeneratorService {
         return bug;
     }
 }
+```
+
+Then when you want to use BugGeneratorService
+```java
+Injector injector = Guice.createInjector(new MyModule());
+BugGeneratorService bugGeneratorService = injector.getInstance(BugGeneratorService.class);
 ```
 
 Write unit tests as usual
