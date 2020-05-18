@@ -74,8 +74,8 @@
 }
 .related-thumbnail {
   position: relative;
-  width: 600px;
-  height: 200px;
+  width: 720px;
+  height: 300px;
   overflow: hidden;
 }
 .related img {
@@ -83,12 +83,13 @@
   left: 50%;
   top: 50%;
   height: auto;
-  width: 600px;
+  width: 720px;
   -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
 }
 .related-title {
+  text-align: right;
   float: right;
   padding-bottom: .5rem;
   font-family: $base-font-family;

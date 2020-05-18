@@ -3,7 +3,7 @@ layout: post
 title: "Dependency Injection and Using Guice"
 author: "Jiahui"
 categories: blog
-tags: [blog]
+tags: [blog, tech]
 image: morpho-1.jpg
 ---
 

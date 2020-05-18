@@ -14,7 +14,7 @@
   padding-top: $header-thickness+10px;
   margin: auto;
   display: block;
-  width: $container-width - 20px;
+  width: $container-width;
 }
 .posts-wrapper h1 {
   margin: 20px 0px 5px;
@@ -29,6 +29,6 @@
     padding-top: $header-thickness+10px;
     margin: auto;
     display: block;
-    width: 95vw;
+    width: 65vw;
   }
 }
