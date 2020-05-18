@@ -14,7 +14,7 @@
   padding-top: $header-thickness+10px;
   margin: auto;
   display: block;
-  width: $container-width;
+  width: $container-width * 0.65;
 }
 .posts-wrapper h1 {
   margin: 20px 0px 5px;
@@ -30,5 +30,19 @@
     margin: auto;
     display: block;
     width: 65vw;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .container {
+    width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .posts-wrapper {
+    width: 95vw;
+    padding-top: $header-thickness+10px;
+    margin: auto;
+    display: block;
   }
 }
