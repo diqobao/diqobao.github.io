@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-26T01:17:46-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiahui Bao</title><subtitle>空山无人</subtitle><author><name>Jiahui</name></author><entry><title type="html">Dependency Injection and Using Guice</title><link href="http://localhost:4000/blog/DIandGuice.html" rel="alternate" type="text/html" title="Dependency Injection and Using Guice" /><published>2020-05-14T00:00:00-07:00</published><updated>2020-05-14T00:00:00-07:00</updated><id>http://localhost:4000/blog/DIandGuice</id><content type="html" xml:base="http://localhost:4000/blog/DIandGuice.html">&lt;h1 id=&quot;dependency-injection-and-using-guice&quot;&gt;Dependency Injection and Using Guice&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-20T00:31:13-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiahui Bao</title><subtitle>空山无人</subtitle><author><name>Jiahui</name></author><entry><title type="html">Behind Linkedin “People Also Viewed</title><link href="http://localhost:4000/blog/peopleAlsoViewed.html" rel="alternate" type="text/html" title="Behind Linkedin “People Also Viewed" /><published>2020-09-19T00:00:00-07:00</published><updated>2020-09-19T00:00:00-07:00</updated><id>http://localhost:4000/blog/peopleAlsoViewed</id><content type="html" xml:base="http://localhost:4000/blog/peopleAlsoViewed.html">&lt;h1 id=&quot;behind-linkedins-people-also-viewed&quot;&gt;Behind Linkedin’s “People Also Viewed”&lt;/h1&gt;
+
+&lt;p&gt;I seldom use LinkedIn, but every time I click into some one’s Linkedin profile, several familiar names would show up in this “People Also Viewed” section. It is an excellent feature, for connecting you with other people you might be interested in, through a basic recommendation system. However, just like all the noisy posts constantly occupying my timeline on LinkedIn, “People Also Viewed” doesn’t really fit my need to see some eye-catching people that I would love connect to, and instead, it keeps pushing someone I’ve already known.&lt;/p&gt;
+
+&lt;h2 id=&quot;guess-the-model-behind-the-black-box&quot;&gt;Guess the model behind the black box&lt;/h2&gt;
+&lt;p&gt;Ignoring all the sophisticated technical details behind this simple list of profiles, which have to be a lot considering how many users they have, I tried to propose a speculation on what the model looks like, based on resources I found online and my own experience with this feature.&lt;/p&gt;
+
+&lt;h3 id=&quot;co-occurrences&quot;&gt;Co-occurrences&lt;/h3&gt;
+&lt;p&gt;To begin with, as &lt;a href=&quot;https://www.quora.com/How-exactly-does-LinkedIn-generate-the-viewers-of-this-profile-also-viewed-list-of-users&quot;&gt;Jay wrote on Quora&lt;/a&gt; in 2011, the logic should be built on top of a simple concept based on &lt;strong&gt;co-occurrence&lt;/strong&gt;.  Basically it captures the similarity between user profiles based on common interests. In this case, for example, if you and John are both looking at someone’e LinkedIn profile, it’s intuitive to think you two might have a common interest, and when you ask more people to view, it’s natural to give you another person John likes. Moreover, it’s highly likely that you’re always signaling common interest with hundreds or thousands of people when you are viewing a LinkedIn page, depending on its popularity.&lt;/p&gt;
+
+&lt;p&gt;Thus in general, what &lt;em&gt;People Also Viewed&lt;/em&gt; does is to use all the “who views who”, “who works for who” data to create a feature vector for everyone, generate a giant sparse matrix representing the number of common interests between two people, and query it for top n people holding most  number of common interests with a certain person and show them on that person’s profile page.&lt;/p&gt;
+
+&lt;p&gt;Here, we have an simplified example of the overall process, that a like of “people also viewed” profiles is generated through 3 single factors from John Doe’s data.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pav-0.png&quot; alt=&quot;an example&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;factors-influencing-outcomes&quot;&gt;Factors Influencing Outcomes&lt;/h3&gt;
+&lt;p&gt;The most important thing, however, seems to be the selected features that we would like to grasp in the model. &lt;em&gt;People Also Viewed&lt;/em&gt; should essentially use “who views who” information, as its name suggests, but a single metric would not satisfy LinkedIn engineers for sure. 
+A list of stuffs that might been taken into consideration are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;people one viewed&lt;/li&gt;
+  &lt;li&gt;schools one goes/went to&lt;/li&gt;
+  &lt;li&gt;companies one works/worked for&lt;/li&gt;
+  &lt;li&gt;job one applied for&lt;/li&gt;
+  &lt;li&gt;people one connected with&lt;/li&gt;
+  &lt;li&gt;groups one is in&lt;/li&gt;
+  &lt;li&gt;job title&lt;/li&gt;
+  &lt;li&gt;location&lt;/li&gt;
+  &lt;li&gt;should be more…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That will give us a vector representing the feature of one user like the following one ( 1 := yes):&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;viewed by user A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;viewed by user B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;viewed by user C&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;went to university of puppy&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;worked for Amazon&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Seattle&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;this means this user viewed by A and B but not by C, went to university of puppy, living in Seattle but never worked for Amazon.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;1 and 0 in the vector stand for two discrete states of true or false. But it doesn’t  have to be always like this. One weight can be added to this is time: that you views someone’s profile today and that you viewed someone’s profile 3 years ago should be telling a quite different story about your preference, at least the ramification on the recommendation should be at different level of confidence. Thus, if you viewed by someone’s profile 1 years ago, the number in your feature vector will be something like 0.01 in stead of 1. If we select a window of 1 year, here is a graph of relationship between date of an action and its weight (or confident level)&lt;/p&gt;
+
+&lt;h3 id=&quot;measuring-similarity&quot;&gt;Measuring Similarity&lt;/h3&gt;
+&lt;p&gt;Since the fundamental logic is about &lt;strong&gt;co-occurrence&lt;/strong&gt;, the first distance function fit for this use case to measure the similarity between two users is [L1 distance], which measures the number of different occurrence between two vectors.&lt;/p&gt;
+
+&lt;h3 id=&quot;be-fancier&quot;&gt;Be Fancier&lt;/h3&gt;
+&lt;p&gt;Considering how tech companies love to deal with anything similar to a recommendation system, I would guess they might try updating their model by leveraging neural networks (aka AI), which is not difficult for well-paid talents working there, as long as the performance trumps the old one. A straightforward performance metric is by counting the number of times you click on the link to profiles given by &lt;em&gt;People Also Viewed&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;also, the model is used for a lot of pages other than individual profiles: LinkedIn is pushing potential jobs you’re suitable apply, linking one college/company to a bunch of other colleges/companies that seem to be related to the one you’re viewing…&lt;/p&gt;
+
+&lt;h2 id=&quot;personal-notes&quot;&gt;Personal Notes&lt;/h2&gt;
+&lt;p&gt;I’m constantly disappointed by recommendation systems which are all over internet, but not so interesting. I keep complaining about how the algorithm of Youtube keep pushing repetitive contents to me, and I find it hard to see anything surprising there, despite an unimaginable complicated system and engineer hours behind it. 
+LinkedIn  &lt;em&gt;People Also Viewed&lt;/em&gt; here, however, starting from a non-ML mapReduce algorithm, is not designed to be that surprising. and I believe, it works pretty well for its use case. Nevertheless, in the future, I’d like to see more unexpected name from the list, whom I’m not able to induce his/her whole LinkedIn profile from that one-line self introduction.&lt;/p&gt;</content><author><name>Jiahui</name></author><category term="blog" /><category term="tech" /><summary type="html">Behind Linkedin’s “People Also Viewed”</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/face-1.jpg" /></entry><entry><title type="html">Dependency Injection and Using Guice</title><link href="http://localhost:4000/blog/DIandGuice.html" rel="alternate" type="text/html" title="Dependency Injection and Using Guice" /><published>2020-05-14T00:00:00-07:00</published><updated>2020-05-14T00:00:00-07:00</updated><id>http://localhost:4000/blog/DIandGuice</id><content type="html" xml:base="http://localhost:4000/blog/DIandGuice.html">&lt;h1 id=&quot;dependency-injection-and-using-guice&quot;&gt;Dependency Injection and Using Guice&lt;/h1&gt;
 
 &lt;h2 id=&quot;dependency-injection&quot;&gt;Dependency Injection&lt;/h2&gt;
 &lt;p&gt;Simply put… A client receives service instances that it dependents on.&lt;/p&gt;

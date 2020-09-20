@@ -7,6 +7,21 @@
 		<atom:link href="/rss-feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Behind Linkedin “People Also Viewed</title>
+				
+					<dc:creator>Jiahui</dc:creator>
+				
+				
+					<description>&lt;h1 id=&quot;behind-linkedins-people-also-viewed&quot;&gt;Behind Linkedin’s “People Also Viewed”&lt;/h1&gt;
+
+</description>
+				
+				<pubDate>Sat, 19 Sep 2020 00:00:00 -0700</pubDate>
+				<link>http://localhost:4000/blog/peopleAlsoViewed.html</link>
+				<guid isPermaLink="true">http://localhost:4000/blog/peopleAlsoViewed.html</guid>
+			</item>
+		
+			<item>
 				<title>Dependency Injection and Using Guice</title>
 				
 					<dc:creator>Jiahui</dc:creator>
