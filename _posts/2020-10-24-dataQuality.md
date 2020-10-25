@@ -22,7 +22,7 @@ In 2020s, we should have a more modern way to handle that, and that is the data 
 
 Commonly, it will provide schema, owner and description about tables across database that users can easily check on a central portal. Moreover, in many metadata system, some additional features are also added depending on different use case. [Uber Databook](https://eng.uber.com/databook/) maintains the freshness and lineage of data, [AirBnB Dataportal](https://medium.com/airbnb-engineering/democratizing-data-at-airbnb-852d76c51770) also has top user information.
 
-Here, I would call out that a lineage graph for tracking how data is transformed in data pipelines is a popular and important part to meta data nowadays. People can dig out an clear insight of data pipelines, statistics and metrics can be generated, and potential issues are always hidden behind it.
+Here, I would call out that a lineage graph for tracking how data is transformed in data pipelines is a popular and important part to meta data nowadays. People can dig out a clear insight of data pipelines, statistics and metrics can be generated, and potential issues are always hidden behind it.
 
 ### Data Validation
 Lots of data engineers, data scientists are suffering from bad data. Where data could go wrong can be the foremost aspect to solve the issue. Data can go wrong in different stage of data processing:
