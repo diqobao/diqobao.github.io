@@ -50,16 +50,24 @@
 
           <section>
             <header>
-              <h2>Works</h2>
             </header>
             <div class="content">
-              <!-- <p><strong></strong>blah blah</p> -->
               <span class="image main">
-                <img src="{{ site.github.url }}/assets/img/morpho-1.jpg" alt="" />
+                <img src="{{ site.github.url }}/assets/img/face-1.jpg" alt="" />
               </span>
-              <a href="{{ site.github.url }}/pages/projects.html">
-                <p>more...</p>
+            </div>
+          </section>
+
+          <section>
+            <header>
+              <h2>Blog</h2>
+            </header>
+            <div class="content">
+              {% for post in site.categories.blog %}
+              <a href="{{ site.github.url }}{{ post.url }}">
+                <h4><span>- {{ post.title }}</span></h4>
               </a>
+              {% endfor %}
             </div>
           </section>
 
