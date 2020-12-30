@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-25T00:59:42-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiahui Bao</title><subtitle>空山无人</subtitle><author><name>Jiahui</name></author><entry><title type="html">Data Quality, Young and Promising?</title><link href="http://localhost:4000/blog/dataQuality.html" rel="alternate" type="text/html" title="Data Quality, Young and Promising?" /><published>2020-10-24T00:00:00-07:00</published><updated>2020-10-24T00:00:00-07:00</updated><id>http://localhost:4000/blog/dataQuality</id><content type="html" xml:base="http://localhost:4000/blog/dataQuality.html">&lt;h1 id=&quot;data-quality&quot;&gt;Data Quality&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-30T00:17:26-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiahui Bao</title><subtitle>空山无人</subtitle><author><name>Jiahui</name></author><entry><title type="html">Some interesting books I read in 2020</title><link href="http://localhost:4000/blog/books-2020.html" rel="alternate" type="text/html" title="Some interesting books I read in 2020" /><published>2020-12-29T00:00:00-08:00</published><updated>2020-12-29T00:00:00-08:00</updated><id>http://localhost:4000/blog/books-2020</id><content type="html" xml:base="http://localhost:4000/blog/books-2020.html">&lt;h2 id=&quot;alexander-hamilton&quot;&gt;Alexander Hamilton&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;revolutions ended in tyranny because they glorified revolution as a permanent state of mind.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A peek in to how this nation was born and a man who aspires to create it.&lt;/p&gt;
+
+&lt;p&gt;For someone like me who is not that knowledgeable about US history, this book is not just about a giant who designs and believes in the strong government and complex political system with solid financial backup, it’s also a biography of the early United States where rioting and passion never vanish, and founding fathers, grouped by parties, seek chances building an ideal society in their views.&lt;/p&gt;
+
+&lt;h2 id=&quot;development-as-freedom&quot;&gt;Development as Freedom&lt;/h2&gt;
+
+&lt;p&gt;It’s a view of freedom from economic perspective. People keep talking about does freedom help development or not, but the book intends to break the causal relationship, and to construct a new theory about freedom by seeing it as capability. If just looking at the conclusion, you may take things like “freedom is important” for granted, and measure it as some concepts serving political needs. However, it’s pretty enjoyable to watch Sen picking each example, introducing structures to complete a building of new economical freedom brick by brick.&lt;/p&gt;
+
+&lt;h2 id=&quot;bottle-of-lies-the-inside-story-of-the-generic-drug-boom&quot;&gt;Bottle of Lies: The Inside Story of the Generic Drug Boom&lt;/h2&gt;
+
+&lt;p&gt;An astonishing scandal involving people desperate for cheap drugs, “meaningless” efforts made by individuals, “evil” companies, historically do-nothing FDA, politics and poor regulations. yet sadly the same story will happen again and again and again.&lt;/p&gt;
+
+&lt;h2 id=&quot;creativity-inc--overcoming-the-unseen-forces-that-stand-in-the-way-of-true-inspiration&quot;&gt;Creativity, Inc. : Overcoming the Unseen Forces That Stand in the Way of True Inspiration&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Too often, we grab the handle and – without realizing it – walk off without the suitcase. What’s more, we don’t even think about what we’ve left behind. After all, the handle is so much easier to carry around than the suitcase.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Fun stories behind Pixar, an unconventional start-up that creates fun.&lt;/p&gt;
+
+&lt;h2 id=&quot;dynamics-of-japans-trade-and-industrial-policy-in-the-post-rapid-growth-era-19802000&quot;&gt;Dynamics of Japan’s Trade and Industrial Policy in the Post Rapid Growth Era (1980–2000)&lt;/h2&gt;
+
+&lt;p&gt;How Japan boosts economy while western countries actively trying suppressing them. Never read through policy from a country before, it’s quite interesting to know a little about tactics governments dealing with governments. From current point of view, a lot of developing countries should also be doing something similar to stimulate their local industry and also to go to global market.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-story-of-art&quot;&gt;The Story of Art&lt;/h2&gt;
+
+&lt;p&gt;Art history 101. The book uncovers how those masterpieces come with social changes. Art could be created by people with a clear aim to present the beauty or harmony they treasure, and can also be a reflection of physical world, and in later time, it’s more like an expression of feelings without any bounded framework.&lt;/p&gt;</content><author><name>Jiahui</name></author><category term="blog" /><category term="book" /><summary type="html">Alexander Hamilton revolutions ended in tyranny because they glorified revolution as a permanent state of mind.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/poke-0.jpg" /></entry><entry><title type="html">Data Quality, Young and Promising?</title><link href="http://localhost:4000/blog/dataQuality.html" rel="alternate" type="text/html" title="Data Quality, Young and Promising?" /><published>2020-10-24T00:00:00-07:00</published><updated>2020-10-24T00:00:00-07:00</updated><id>http://localhost:4000/blog/dataQuality</id><content type="html" xml:base="http://localhost:4000/blog/dataQuality.html">&lt;h1 id=&quot;data-quality&quot;&gt;Data Quality&lt;/h1&gt;
 
 &lt;p&gt;Data has been put into the central of lots of software systems, as data driven methods growing popularity in all kinds of business.Companies are hiring tons of data scientists or data analysts (or other fancy titles doing similar work) to mine information from data and reduce cost or make profit through it.&lt;/p&gt;
 
