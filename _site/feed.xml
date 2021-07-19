@@ -1,4 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-30T00:17:26-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiahui Bao</title><subtitle>空山无人</subtitle><author><name>Jiahui</name></author><entry><title type="html">Some interesting books I read in 2020</title><link href="http://localhost:4000/blog/books-2020.html" rel="alternate" type="text/html" title="Some interesting books I read in 2020" /><published>2020-12-29T00:00:00-08:00</published><updated>2020-12-29T00:00:00-08:00</updated><id>http://localhost:4000/blog/books-2020</id><content type="html" xml:base="http://localhost:4000/blog/books-2020.html">&lt;h2 id=&quot;alexander-hamilton&quot;&gt;Alexander Hamilton&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-19T00:59:52-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiahui Bao</title><subtitle>空山无人</subtitle><author><name>Jiahui</name></author><entry><title type="html">Differential Privacy, From My Perspective</title><link href="http://localhost:4000/blog/privacy.html" rel="alternate" type="text/html" title="Differential Privacy, From My Perspective" /><published>2021-07-14T00:00:00-07:00</published><updated>2021-07-14T00:00:00-07:00</updated><id>http://localhost:4000/blog/privacy</id><content type="html" xml:base="http://localhost:4000/blog/privacy.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Differential Privacy has been gaining significant attention in research. Working in tech industry, I have mixed feeling about topics related to data privacy. There’s no doubt that we deal with huge amount of data from users, and privacy should be valued. However, data seems to be a concept that covers basically everything, which leaves us wondering what kind of information should be private and how we monitor the whole cycle from collecting data to using them. Some people feel uncomfortable about being a record in database, especially with identifications. Once we have raw data in database, to prevent malicious people from seeing or using the data, access control is always necessary. And of course, the black box where data is leverage to learn your behavior, which raises lots of concerns.&lt;/p&gt;
+
+&lt;p&gt;While there’re a lot of methods dealing with privacy, the overall procedure that processes raw data to derive information, is exactly where differential privacy kicks in. It provides a rigorous privacy framework without which people may feel confusing about what we are talking about when we talk about privacy.&lt;/p&gt;
+
+&lt;p&gt;A simple method is to add a noise to data from everything user so that you’ll never know individual’s activity correctly, but some useful insights can still be derived from large number of records.&lt;/p&gt;
+
+&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
+
+&lt;p&gt;Differential privacy is defined upon randomized algorithms &lt;script type=&quot;math/tex&quot;&gt;M : A \to \Delta(B)&lt;/script&gt;, which maps a domain A to a probability simplex over discrete range B. For each &lt;script type=&quot;math/tex&quot;&gt;a \in A: Pr(M(a) = b) = (M(a))_{b}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;(\epsilon, \delta)&lt;/script&gt;-differentially private randomized algorithm is defined as &lt;script type=&quot;math/tex&quot;&gt;\forall S \subseteq B&lt;/script&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;Pr[M(x) \in S] \le exp(\epsilon) Pr[M(y) \in S] + \delta&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;x, y \in S&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\|x-y\|_{1} = 1&lt;/script&gt; (l1 distance).&lt;/p&gt;
+
+&lt;p&gt;Another concept is privacy loss. It quantifies differential privacy:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L(\xi)_{M(x)\mid M(y)} = \ln \frac{Pr[M(x) = \xi]}{Pr[M(y) = \xi]}&lt;/script&gt;
+
+&lt;p&gt;The definition is pretty straightforward. The core how we protect privacy is about no exposure on individual data, so the above term guarantees a single record should make little difference to the overall outcome. &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; indicates how private it ensures, every small value would be pretty much the same (like all &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; in maths). &lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt; means there’s still a bit possibility that privacy loss is not preserved in the certain bound, and in many circumstances &lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt; is set to 0.&lt;/p&gt;
+
+&lt;p&gt;This definition also promises in economical view, utility for each person will be same no matter they participate the survey or not. I find this aligns with GDPR on the principle that data subject has the right to decide whether their data can be used to do certain tasks or not. Theoretically, if an individual understands that this action about their data doesn’t affect anything in terms of their future utility, he or she should give the consent on collecting the data and it will also be easier to collect data for a differentially private survey.&lt;/p&gt;
+
+&lt;h2 id=&quot;techniques&quot;&gt;Techniques&lt;/h2&gt;
+&lt;h3 id=&quot;randomized-response&quot;&gt;Randomized Response&lt;/h3&gt;
+&lt;p&gt;This is a simple mechanism, an example is that flip a coin before giving the answer (Y or N), give the original response if head and give opposite response if tail.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-laplace-mechanism&quot;&gt;The Laplace Mechanism&lt;/h3&gt;
+&lt;p&gt;For any query function &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt; that gives continuous variable, we add noises to the result, and the noise &lt;script type=&quot;math/tex&quot;&gt;Y_{i}&lt;/script&gt; follows Laplace distribution, which is symmetric version of the exponential distribution:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;M(x) = f(x) + Y_{1}...Y_{k}&lt;/script&gt;
+
+&lt;h3 id=&quot;smalldb&quot;&gt;SmallDB&lt;/h3&gt;
+&lt;p&gt;For a series of queries, privacy may be increased if Q1 and Q2 are asking similar questions with small differences. In this setting, correlated noises could be added to each query which makes more sense than independent random noises.&lt;/p&gt;
+
+&lt;p&gt;The idea of SmallDB Algorithm is for a series of queries, we sample a small portion of the entire database to preserve given accuracy and privacy. The size of this small database is determined by number of queries and required accuracy, and it uses exponential mechanism to generate probability distribution with utility function of measuring error incurred by approximation.&lt;/p&gt;
+
+&lt;p&gt;There is also an online mechanism with the same purpose: private multiplicative weights.&lt;/p&gt;
+
+&lt;h3 id=&quot;differentially-private-sgd&quot;&gt;Differentially Private SGD&lt;/h3&gt;
+&lt;p&gt;In deep learning, parameters are learned from a black box consist of neural networks. Differentially Private SGD is proposed to make the black box differentially private by controlling the influence of the training data during SGD computation.&lt;/p&gt;
+
+&lt;p&gt;The algorithm maintains the normal SGD procedure, while minimizing loss function, the gradient is computed for a randomly chosen subset of data, and add gaussian noise to gradient obtained.&lt;/p&gt;
+
+&lt;h2 id=&quot;in-industry&quot;&gt;In Industry&lt;/h2&gt;
+&lt;p&gt;Plenty of organizations are starting utilizing Differential Privacy for privacy concerns. US 2020 Census also leverages it, with no surprise. I did little research on the current progress from some companies.&lt;/p&gt;
+
+&lt;h3 id=&quot;apple&quot;&gt;Apple&lt;/h3&gt;
+&lt;p&gt;According to &lt;a href=&quot;https://www.apple.com/privacy/docs/Differential_Privacy_Overview.pdf&quot;&gt;Apple’s Differential Privacy Overview&lt;/a&gt;, differential privacy is adopted when apple collecting data from users. A noise will be added locally to user’s data before sending it to Apple.&lt;/p&gt;
+
+&lt;h3 id=&quot;google&quot;&gt;Google&lt;/h3&gt;
+&lt;p&gt;Google open sourced a &lt;a href=&quot;https://github.com/google/differential-privacy/&quot;&gt;library&lt;/a&gt; which supports differential privacy mechanism. Also Google has also rolled out support for differentially private queries in query engine.&lt;/p&gt;
+
+&lt;h3 id=&quot;facebook&quot;&gt;Facebook&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://ai.facebook.com/blog/introducing-opacus-a-high-speed-library-for-training-pytorch-models-with-differential-privacy/&quot;&gt;Opacus was released for training PyTorch models with differential privacy&lt;/a&gt;. This uses DP SGD discussed above.&lt;/p&gt;
+
+&lt;h2 id=&quot;now---future&quot;&gt;Now -&amp;gt; Future&lt;/h2&gt;
+&lt;p&gt;Differential Privacy theory is promising in research. Dozens of new ideas worth exploring in the future under the currently framework. I would be happy to see algorithms performing well and in the mean time preserving privacy for everyone.&lt;/p&gt;
+
+&lt;p&gt;While data has been weaponized (exaggerated though) and privacy talks is prevailing, finishing up this blog, I’m still holding back about applying the concept to actual usages. Unless more strict regulations closely related to differential privacy are enforced, companies may not see enough benefits for them to be motivated to have it in a wide range, especially smaller businesses. Even under the assumption that efficiency and accuracy stay the same, not sure is there any privacy concern over current data query models. But it’s just like many other research areas, improvements step by step can lead to huge changes.&lt;/p&gt;</content><author><name>Jiahui</name></author><category term="blog" /><category term="tech" /><summary type="html">Introduction Differential Privacy has been gaining significant attention in research. Working in tech industry, I have mixed feeling about topics related to data privacy. There’s no doubt that we deal with huge amount of data from users, and privacy should be valued. However, data seems to be a concept that covers basically everything, which leaves us wondering what kind of information should be private and how we monitor the whole cycle from collecting data to using them. Some people feel uncomfortable about being a record in database, especially with identifications. Once we have raw data in database, to prevent malicious people from seeing or using the data, access control is always necessary. And of course, the black box where data is leverage to learn your behavior, which raises lots of concerns.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/seattle-0.jpeg" /></entry><entry><title type="html">Some interesting books I read in 2020</title><link href="http://localhost:4000/blog/books-2020.html" rel="alternate" type="text/html" title="Some interesting books I read in 2020" /><published>2020-12-29T00:00:00-08:00</published><updated>2020-12-29T00:00:00-08:00</updated><id>http://localhost:4000/blog/books-2020</id><content type="html" xml:base="http://localhost:4000/blog/books-2020.html">&lt;h2 id=&quot;alexander-hamilton&quot;&gt;Alexander Hamilton&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;revolutions ended in tyranny because they glorified revolution as a permanent state of mind.&lt;/p&gt;
 &lt;/blockquote&gt;

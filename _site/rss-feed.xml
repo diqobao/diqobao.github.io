@@ -7,6 +7,22 @@
 		<atom:link href="/rss-feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Differential Privacy, From My Perspective</title>
+				
+					<dc:creator>Jiahui</dc:creator>
+				
+				
+					<description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Differential Privacy has been gaining significant attention in research. Working in tech industry, I have mixed feeling about topics related to data privacy. There’s no doubt that we deal with huge amount of data from users, and privacy should be valued. However, data seems to be a concept that covers basically everything, which leaves us wondering what kind of information should be private and how we monitor the whole cycle from collecting data to using them. Some people feel uncomfortable about being a record in database, especially with identifications. Once we have raw data in database, to prevent malicious people from seeing or using the data, access control is always necessary. And of course, the black box where data is leverage to learn your behavior, which raises lots of concerns.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Wed, 14 Jul 2021 00:00:00 -0700</pubDate>
+				<link>http://localhost:4000/blog/privacy.html</link>
+				<guid isPermaLink="true">http://localhost:4000/blog/privacy.html</guid>
+			</item>
+		
+			<item>
 				<title>Some interesting books I read in 2020</title>
 				
 					<dc:creator>Jiahui</dc:creator>
