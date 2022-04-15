@@ -22,7 +22,7 @@
             </div>
           </section>
           			
-					<!-- <section id="first">
+					<section id="first">
             <header>
               <h2>A little about ME</h2>
             </header>
@@ -32,11 +32,22 @@
               <h4>Once random walking @ ZJU, @ Georgia Tech.</h4>
               <span class="image main"><img src="{{ site.github.url }}/assets/img/nyc-1.jpg" alt="" /></span>
             </div>
-          </section> -->
+          </section>
+          
 
-          <section id="first">
+          <section>
             <header>
-              <h2>Posts</h2>
+            </header>
+            <div class="content">
+              <span class="image main">
+                <img src="{{ site.github.url }}/assets/img/face-1.jpg" alt="" />
+              </span>
+            </div>
+          </section>
+
+          <section>
+            <header>
+              <h2>Blog</h2>
             </header>
             <div class="content">
               {% for post in site.categories.blog %}
@@ -47,6 +58,15 @@
             </div>
           </section>
 
+          <!-- <section>
+            <header>
+              <h2> </h2>
+            </header>
+            <div class="content">
+              <p><strong></strong></p>
+              <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+            </div>
+          </section> -->
     </div>
     <!-- {% include footer.html %} -->
 
