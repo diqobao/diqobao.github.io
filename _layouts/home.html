@@ -1,84 +1,71 @@
-<!doctype html>
-<html class="is-preload">
+<!DOCTYPE HTML>
+<html>
+  {% include google-analytics.html %}
+	<head>
+		<title>Jiahui Bao</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ site.github.url }}/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="{{ site.github.url }}/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-{% include google-analytics.html %}
-{% include head.html %}
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<body class="is-preload">
+				<!-- Main -->
+					<div id="main">
+						<header id="header" class="alt style5">
+							<a href="{{ site.github.url }}/index.html" class="logo"><strong>Jiahui</strong> <span>Bao</span></a>
+						</header>
+						<!-- One -->
+						<section id="one" class="tiles">
+							<article>
+								<span class="image">
+								</span>
+								<header class="major">
+									<h3>Jiahui Bao</h3>
+									<p></p>
+								</header>
+							</article>
+							<article>
+								<span class="image">
+									<!-- <img src="images/face-1.jpg" alt="" /> -->
+								</span>
+								<header class="major">
+									<p>Building stuffs and random walking. </p>
+									<p>currently eng@AWS</p>
+									<p>prev @Gatech, ZJU</p>
+								</header>
+							</article>
+							<article>
+								<span class="image">
+									<img src="{{ site.github.url }}/assets/img//face-1.jpg" alt="" />
+								</span>
+								<header class="major">
+									<h3><a href="{{ site.github.url }}/pages/posts.html" class="link">Posts</a></h3>
+									<p>I occasionally write on [\p{L}\p{M}]*.</p>
+								</header>
+							</article>
+							<article>
+								<span class="image">
+									<!-- <img src="images/pic04.jpg" alt="" /> -->
+								</span>
+							</article>
+						</section>
+					</div>
 
-    {% include header.html %}
-    <div id="wrapper">
-        <section class="intro">
-            <header>
-              <h1>HI</h1>
-              <h3>I'm Jiahui</h3>
-              <h3>You found me!</h3>
-              <ul class="actions">
-                <li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
-              </ul>
-            </header>
-            <div class="content">
-              <span class="image fill" data-position="center"><img src="{{ site.github.url }}/assets/img/yahaha-1.jpg" alt="" /></span>
-            </div>
-          </section>
-          			
-					<!-- <section id="first">
-            <header>
-              <h2>A little about ME</h2>
-            </header>
-            <div class="content">
-              <h3>Hacker, Doodler, Lemon tea lover. Always intern for life.</h3>
-              <h3>Engineering @ AWS. </h3>
-              <h4>Once random walking @ ZJU, @ Georgia Tech.</h4>
-              <span class="image main"><img src="{{ site.github.url }}/assets/img/nyc-1.jpg" alt="" /></span>
-            </div>
-          </section> -->
-          
+          {% include footer.html %}
+			</div>
 
-          <section id="first">
-            <header>
-            </header>
-            <div class="content">
-              <span class="image main">
-                <img src="{{ site.github.url }}/assets/img/face-1.jpg" alt="" />
-              </span>
-            </div>
-          </section>
+		<!-- Scripts -->
+			<script src="{{ site.github.url }}/assets/js/jquery.min.js"></script>
+			<script src="{{ site.github.url }}/assets/js/jquery.scrolly.min.js"></script>
+			<script src="{{ site.github.url }}/assets/js/jquery.scrollex.min.js"></script>
+			<script src="{{ site.github.url }}/assets/js/browser.min.js"></script>
+			<script src="{{ site.github.url }}/assets/js/breakpoints.min.js"></script>
+			<script src="{{ site.github.url }}/assets/js/util.js"></script>
+			<script src="{{ site.github.url }}/assets/js/main.js"></script>
 
-          <section>
-            <header>
-              <h2>Blog</h2>
-            </header>
-            <div class="content">
-              {% for post in site.categories.blog %}
-              <a href="{{ site.github.url }}{{ post.url }}">
-                <h4><span>- {{ post.title }}</span></h4>
-              </a>
-              {% endfor %}
-            </div>
-          </section>
-
-          <!-- <section>
-            <header>
-              <h2> </h2>
-            </header>
-            <div class="content">
-              <p><strong></strong></p>
-              <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-            </div>
-          </section> -->
-    </div>
-    <!-- {% include footer.html %} -->
-
-  <!-- Scripts -->
-  <script src="{{ site.github.url }}/assets/js/jquery.min.js"></script>
-  <script src="{{ site.github.url }}/assets/js/jquery.scrolly.min.js"></script>
-  <script src="{{ site.github.url }}/assets/js/browser.min.js"></script>
-  <script src="{{ site.github.url }}/assets/js/breakpoints.min.js"></script>
-  <script src="{{ site.github.url }}/assets/js/util.js"></script>
-  <script src="{{ site.github.url }}/assets/js/main.js"></script>
-</body>
+	</body>
 </html>
-
-
-

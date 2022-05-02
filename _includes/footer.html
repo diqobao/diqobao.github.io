@@ -1,6 +1,16 @@
-<footer class="footer">
-  {% for item in site.data.settings.social %}
-    <a href="{{ item.link }}" class="menu-link" target="_blank"><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>
-  {% endfor %}
-  <div class="post-date"><a href="{{ site.github.url }}/">{{ site.title }} | {{ site.description }} by {{ site.author }}</a></div>
+<footer id="footer">
+  <div class="inner">
+    <ul class="icons">
+      {% for item in site.data.settings.social %}
+      <li><a href="{{ item.link }}" class="icon brands alt fa-{{ item.icon }}"><span class="label">GitHub</span></a></li>
+      {% endfor %}
+<!-- 								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+      <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li> -->
+      <!-- <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+      <li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li> -->
+    </ul>
+    <ul class="copyright">
+      <li>&copy; {{ site.title }} 2202</li><li>{{ site.description }}</li>
+    </ul>
+  </div>
 </footer>

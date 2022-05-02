@@ -8,11 +8,40 @@
 		<noscript><link rel="stylesheet" href="{{ site.github.url }}/assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-    {% include google-analytics.html %}
-    <div class="posts-wrapper">
-      {{ content }}
-    </div>
-    
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style5">
+						<a href="{{ site.github.url }}/index.html" class="logo"><strong>Jiahui</strong> <span>Bao</span></a>
+					</header>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style5">
+						<div class="inner">
+							<header>
+								<h1>Posts</h1>
+							</header>
+							<div class="content">
+								<ul>
+                				 	{% for post in site.categories.blog %}
+									<p><a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a></p>
+                					{% endfor %}
+									<p></p>
+									<p></p>
+								</ul>
+							</div>
+						</div>
+					</section>
+
+				<!-- Footer -->
+				{% include footer.html %}
+
+			</div>
+
 		<!-- Scripts -->
 			<script src="{{ site.github.url }}/assets/js/jquery.min.js"></script>
 			<script src="{{ site.github.url }}/assets/js/jquery.scrolly.min.js"></script>
